@@ -36,7 +36,27 @@ class cal_24():
         else:
             print("There is no solution!")
 
-trial = cal_24()
-trial.show_question()
-trial.show_solutions()
-
+if __name__ == "__main__":
+    print("Welcome to the 'Calculate 24' game!")
+    mode = input("Solvable-Only Mode: Enter '1'. All-Random Mode: Enter '2'."
+                 "Enter 'q' to quit.")
+    text = []
+    while True:
+        if text:
+            mode = text
+        if mode not in ['1', '2', 'q']:
+            print("I assume you want to try Solvable-Only Mode...")
+            mode = '1'
+        trial = cal_24()
+        if mode == '1':
+            while not trial.solutions:
+                trial = cal_24()
+            trial.show_question()
+        if mode == '2':
+            trial.show_question()
+        if mode == 'q':
+            break
+        text = input("Enter to continue. Type 's' to show solutions...")
+        if text == 's':
+            trial.show_solutions()
+            text = input("Hit Enter to continue...")
